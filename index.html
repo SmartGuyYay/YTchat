@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>NRL Chat Sender 🚀</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 50px;
+      background-color: #f7f7f7;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      margin: 10px;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <h1>Send to @TheLeaguie Chat 💬</h1>
+  <form id="chatForm">
+    <input type="text" id="message" placeholder="Type your hype 🔥" required>
+    <br>
+    <button type="submit">SEND TO CHAT 🚀</button>
+  </form>
+
+  <script>
+    document.getElementById('chatForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const msg = document.getElementById('message').value;
+      await fetch('http://YOUR-COMPUTER-IP:5000/send', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: msg })
+      });
+      alert("Message sent!");
+      document.getElementById('message').value = "";
+    });
+  </script>
+</body>
+</html>
